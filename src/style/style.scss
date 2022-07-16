@@ -1,2 +1,376 @@
 @import "normalize.css";
+@import '../fonts/stylesheet.css';
 
+
+$font-color-basic: #111111;
+$font-color-link: #5A61ED;
+$font-color-title: #111111;
+$font-color-label: #7C7C7C;
+$font-color-button: #ffffff;
+$font-color-error: #FF2222;
+
+$input-border-color-error: #FF2828;
+$input-border-color: #F2F2F2;
+$input-border-color-active: #979797;
+
+$bg-button: #5A61ED;
+$bg-sign-aside: #5A61ED;
+
+$font-Work: "Work Sans", sans-serif;
+$font-PT: "PT Sans", sans-serif;
+
+$font-size-title: 1.375rem; //22px
+$font-size-basic: 0.875rem; //14px
+$font-size-label: 0.75rem; //12px
+$font-size-link: 0.8125rem; //13px
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: $font-Work;
+  font-weight: 300;
+  font-style: normal;
+  font-size: $font-size-basic;
+  color: $font-color-basic;
+  background-color: #ffffff;
+}
+
+.sign-up {
+  background: #F9FAFF;
+}
+
+.sign-up__container {
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  max-width: 665px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  filter: drop-shadow(0px 0.857em .857em rgba(0, 0, 0, 0.2));
+}
+
+.sign-up__section {
+  width: 79.25%;
+  padding: 2.9em 1.571em 2.357em 1.5em;
+}
+
+.sign-up__header {
+  margin-bottom: 1.429em;
+}
+
+.sign-up__title {
+  margin: 0;
+  padding: 0;
+  font-size: $font-size-title;
+  font-weight: 500;
+  line-height: 1.1718;
+  letter-spacing: -0.46px;
+  color: $font-color-title;
+}
+
+.sign-up__subtitle {
+  margin: 0;
+  padding: 0;
+  font-size: $font-size-basic;
+  line-height: 1.1;
+}
+
+.sign-up__form {
+  margin: 0;
+  padding: 0;
+}
+
+.form__body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form__item {
+  flex: 1 1 calc(50% - .536em);
+  min-width: 150px;
+}
+
+.form__item:nth-child(2n-1) {
+  margin-right: 1.071em;
+}
+
+.form__input-wrapper {
+  position: relative;
+  padding-top: .64em;
+  margin-bottom: 1.2em;
+}
+
+.form__input-wrapper--flex {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.form__label,
+.form__input:focus ~ .form__label--anime,
+.drop-down--active ~ .form__label--anime {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(0%);
+  font-size: $font-size-label;
+  color: $font-color-label;
+  font-weight: 300;
+}
+
+.drop-down ~ .form__label--anime {
+  z-index: -1;
+}
+
+.form__label--anime {
+  padding-bottom: .571em;
+  top: 100%;
+  left: 0;
+  transform: translateY(-100%);
+  font-size: $font-size-basic;
+  color: $font-color-basic;
+  font-weight: normal;
+  transition: all 0.3s linear;
+}
+
+.form__input {
+  width: 100%;
+  margin-top: 0.2em;
+  padding: .5em 0 .4em 0;
+  line-height: 1.143;
+  font-weight: normal;
+  border: none;
+  border-bottom: 0.7px solid $input-border-color;
+  transition: all 0.3s linear;
+}
+
+.form__input:active,
+.form__input:focus {
+  outline: none;
+  border: none;
+  border-bottom: 0.7px solid #979797;
+
+}
+
+
+// Custom selector -- start
+
+
+.form__select {
+  display: none;
+}
+
+.drop-down__wrapper{
+  display: flex;
+}
+
+.drop-down {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
+
+.drop-down--active .drop-down__button {
+  outline: none;
+  border: none;
+  border-bottom: 0.7px solid #979797;
+}
+
+.drop-down__button {
+  position: relative;
+  cursor: pointer;
+
+  span {
+    opacity: 0;
+    color: transparent;
+    visibility: hidden;
+  }
+
+  &:after {
+    content: '';
+    width: .57em;
+    height: .57em;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 1;
+    background-image: url('../images/arrow.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateY(-50%);
+    transition: all 0.3s linear;
+  }
+}
+
+.drop-down__menu-box {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  background-color: #fff;
+  border-radius: .286em;
+  box-shadow: 0 .2em .4em 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -ms-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  visibility: hidden;
+  opacity: 0;
+  margin-top: 5px;
+}
+
+.drop-down__menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+}
+
+.drop-down__menu-box:before {
+  content: '';
+  background-color: transparent;
+  border-right: 8px solid transparent;
+  position: absolute;
+  border-left: .57em solid transparent;
+  border-bottom: .57em solid #fff;
+  border-top: .57em solid transparent;
+  top: 1.07em;
+  right: 1.286em;
+
+}
+
+.drop-down__menu-box:after {
+  content: '';
+  background-color: transparent;
+}
+
+.drop-down__item {
+  font-size: 13px;
+  padding: 1em;
+  text-align: left;
+  font-weight: 500;
+  color: $font-color-label;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 1px solid #e0e2e9;
+}
+
+.drop-down__item:hover {
+  color: $bg-sign-aside;
+}
+
+.drop-down__item:last-of-type {
+  border-bottom: 0;
+}
+
+
+.drop-down--active .drop-down__menu-box {
+  visibility: visible;
+  opacity: 1;
+  margin-top: 0.4em;
+  z-index: 1;
+}
+
+.drop-down--active .drop-down__button {
+  &:after {
+    transform: rotate(180deg);
+  }
+}
+
+.drop-down__item:before {
+  content: '';
+  position: absolute;
+  width: .23em;
+  height: 2.15em;
+  background-color: $bg-sign-aside;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+}
+
+.drop-down__item:hover:before {
+  display: block;
+}
+
+// Custom selector -- End
+
+
+// Custom radio -- Start
+
+.form__radio-inner {
+  display: flex;
+  align-items: center;
+  width: auto;
+  margin-right: 19px;
+  font-size: $font-size-basic;
+  line-height: 1.143;
+  font-weight: normal;
+  color: $font-color-basic;
+  border: none;
+}
+
+.form__radio-inner:hover {
+  border: none;
+}
+
+.form__radio-inner input[type=radio] {
+  display: none;
+}
+
+.form__radio-inner label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 1.2em;
+  user-select: none;
+}
+
+.form__radio-inner label:before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: url(../images/radio-off.svg) 0 0 no-repeat;
+}
+
+/* Checked */
+.form__radio-inner input[type=radio]:checked + label:before {
+  background: url(../images/radio-on.svg) 0 0 no-repeat;
+}
+
+/* Hover */
+.form__radio-inner label:hover:before {
+  filter: brightness(120%);
+}
+
+/* Disabled */
+.form__radio-inner input[type=radio]:disabled + label:before {
+  filter: grayscale(100%);
+}
+
+// Custom radio -- End
+
+
+.sign-up__aside {
+  width: 20.75%;
+  background: $bg-sign-aside;
+}
