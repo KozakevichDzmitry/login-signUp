@@ -43,8 +43,8 @@
                             <option value="finns">Finns</option>
                             <option value="egypt">Egypt</option>
                         </select>
-                        <div class="drop-down">
-                            <div id="dropDown" class="drop-down__button form__input"><span>Nationality</span></div>
+                        <div class="drop-down" id="dropDownNationality" >
+                            <div class="drop-down__button form__input"><span>Nationality</span></div>
                             <div class="drop-down__menu-box">
                                 <ul class="drop-down__menu">
                                     <li data-value="american" class="drop-down__item select-nationality">American</li>
@@ -69,39 +69,24 @@
                     <div class="form__input-wrapper">
                         <input class="form__input" type="date" name="last-name" id="date" hidden required="">
                         <div class="drop-down__wrapper">
-                        <div class="drop-down">
-                            <div id="dropDownDay" class="drop-down__button form__input"><span>Day</span></div>
-                            <div class="drop-down__menu-box">
-                                <ul class="drop-down__menu">
-                                    <li data-value="american" class="drop-down__item select-nationality">American</li>
-                                    <li data-value="brazil" class="drop-down__item select-nationality">Brazil</li>
-                                    <li data-value="finns" class="drop-down__item select-nationality">Finns</li>
-                                    <li data-value="egypt" class="drop-down__item select-nationality">Egypt</li>
-                                </ul>
+                            <div class="drop-down" id="dropDownDay">
+                                <div  class="drop-down__button form__input"><span>Day</span></div>
+                                <div class="drop-down__menu-box">
+                                    <ul class="drop-down__menu"></ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="drop-down">
-                            <div id="dropDownMonth" class="drop-down__button form__input"><span>Month</span></div>
-                            <div class="drop-down__menu-box">
-                                <ul class="drop-down__menu">
-                                    <li data-value="american" class="drop-down__item select-nationality">American</li>
-                                    <li data-value="brazil" class="drop-down__item select-nationality">Brazil</li>
-                                    <li data-value="finns" class="drop-down__item select-nationality">Finns</li>
-                                    <li data-value="egypt" class="drop-down__item select-nationality">Egypt</li>
-                                </ul>
+                            <div class="drop-down" id="dropDownMonth">
+                                <div class="drop-down__button form__input"><span>Month</span></div>
+                                <div class="drop-down__menu-box">
+                                    <ul class="drop-down__menu"></ul>
+                                </div>
                             </div>
-                        </div>
-                        <div class="drop-down">
-                            <div id="dropDownYear" class="drop-down__button form__input"><span>Year</span></div>
-                            <div class="drop-down__menu-box">
-                                <ul class="drop-down__menu">
-                                    <li data-value="american" class="drop-down__item select-nationality">American</li>
-                                    <li data-value="brazil" class="drop-down__item select-nationality">Brazil</li>
-                                    <li data-value="finns" class="drop-down__item select-nationality">Finns</li>
-                                    <li data-value="egypt" class="drop-down__item select-nationality">Egypt</li>
-                                </ul>
+                            <div class="drop-down" id="dropDownYear">
+                                <div class="drop-down__button form__input"><span>Year</span></div>
+                                <div class="drop-down__menu-box">
+                                    <ul class="drop-down__menu"></ul>
+                                </div>
                             </div>
-                        </div>
                         </div>
                         <label class="form__label" for="date">Date of Birth</label>
                     </div>
@@ -116,7 +101,7 @@
 
                         <div class="form__input form__radio-inner">
                             <input class="form__radio" type="radio" name="gender" id="genderFemale"
-                                required="">
+                                   required="">
                             <label for="genderFemale">Female</label>
                         </div>
                         <label class="form__label">Gender</label>
