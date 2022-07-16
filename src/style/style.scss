@@ -3,7 +3,7 @@
 
 
 $font-color-basic: #111111;
-$font-color-link: #5A61ED;
+$font-color-link: #2a33f1;
 $font-color-title: #111111;
 $font-color-label: #7C7C7C;
 $font-color-button: #ffffff;
@@ -62,8 +62,16 @@ body {
 }
 
 .sign-up__section {
+  position: relative;
   width: 79.25%;
   padding: 2.9em 1.571em 2.357em 1.5em;
+}
+
+.sign-up__bg-image{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -2;
 }
 
 .sign-up__header {
@@ -97,6 +105,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 5.8em;
 }
 
 .form__item {
@@ -146,6 +155,7 @@ body {
   color: $font-color-basic;
   font-weight: normal;
   transition: all 0.3s linear;
+  z-index: -1;
 }
 
 .form__input {
@@ -154,6 +164,7 @@ body {
   padding: .5em 0 .4em 0;
   line-height: 1.143;
   font-weight: normal;
+  background: transparent;
   border: none;
   border-bottom: 0.7px solid $input-border-color;
   transition: all 0.3s linear;
@@ -441,8 +452,96 @@ body {
 
 // Custom calendar --  End
 
+input[type="password"]{
+  padding: .437em 0 .2em 0;
+  font-family: $font-PT;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.144em;
+  line-height: 1.2;
+  letter-spacing: .0625em;
+}
+
+// form__bottom --  Start
+
+.form__bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form__bottom-link{
+  font-size: $font-size-link;
+
+}
+
+.form__bottom-text{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.link__login{
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+  transition: all 0.1s linear;
+  border: none;
+  background: transparent;
+  svg{
+    fill: $font-color-link;
+  }
+}
+
+.link__login:hover {
+
+  svg{
+    fill: #5A61EDFF;
+  }
+
+}
+
+.button{
+  padding: 0.5em 1.8em 0.5em 1.7em;
+  font-weight: 400;
+  font-family: $font-PT;
+  color: #ffffff;
+  background: $bg-sign-aside;
+  border: 0.5px solid #FFFFFF;
+  cursor: pointer;
+  transition: all .3s linear;
+}
+
+button:hover{
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-color: $font-color-link;
+}
+// form__bottom --  End
+
+
+// sign-up__aside --Start
 
 .sign-up__aside {
+  position: relative;
   width: 20.75%;
   background: $bg-sign-aside;
 }
+
+.sign-up__aside-title{
+  padding: 0 0 4px 0;
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 48%;
+  font-family: $font-PT;
+  font-size: 3.5em;
+  font-weight: 400;
+  line-height: 1.286;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  transform-origin: bottom right;
+  transform: rotate(-90deg);
+}
+// sign-up__aside --Start
