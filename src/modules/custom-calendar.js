@@ -20,7 +20,7 @@ export class CustomCalendar {
                     //  Crate and update HTML list in drop-down Day
                     this.dropDownMenu.innerHTML = ''
                     for (let i = 1; i <= day; i++) {
-                        let element = `<li data-value=${i} class="drop-down__item select-nationality">${i}</li>`
+                        let element = `<li data-value=${i} class="drop-down__item">${i}</li>`
                         this.dropDownMenu.innerHTML += element;
                     }
 
@@ -33,7 +33,7 @@ export class CustomCalendar {
                     //  Crate and add HTML list in drop-down Month
                     let elementList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
                         .map((item, index) => {
-                            return `<li data-value=${index} class="drop-down__item select-nationality">${item}</li>`
+                            return `<li data-value=${index} class="drop-down__item">${item}</li>`
                         })
                     elementList.forEach(item => this.dropDownMenu.innerHTML += item)
 
@@ -41,7 +41,7 @@ export class CustomCalendar {
 
                     //  Crate and add HTML list in drop-down Year
                     for (let i = new Date().getFullYear(); i >= 1900; i--) {
-                        let element = `<li data-value=${i} class="drop-down__item select-nationality">${i}</li>`
+                        let element = `<li data-value=${i} class="drop-down__item">${i}</li>`
                         this.dropDownMenu.innerHTML += element;
                     }
                 }
