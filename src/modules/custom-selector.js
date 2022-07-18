@@ -7,7 +7,7 @@ export class CustomSelect {
 
         this.btnDown.addEventListener('click', () => this.changeStateMenu())
         this.dropDownMenu.addEventListener('click', ()=> this.chooseElement())
-        window.addEventListener('click', ()=> this.closeMenu())
+        window.addEventListener('click', (e)=> this.closeMenu())
     }
 
     closeMenu() { // Close the menu
@@ -36,6 +36,7 @@ export class CustomSelect {
         const elem = e.target;
         if (elem.classList.contains('drop-down__item')) {
             this.btnDown.textContent = elem.textContent;
+            this.btnDown.classList.remove('invalid')
             this.sendValueInSelect(elem)
         }
     }

@@ -67,7 +67,7 @@ body {
   padding: 2.9em 1.571em 2.357em 1.5em;
 }
 
-.sign-up__bg-image{
+.sign-up__bg-image {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -131,8 +131,10 @@ body {
 
 .form__label,
 .form__input:focus ~ .form__label--anime,
-.form__input:valid ~ .form__label--anime,
-.drop-down--active ~ .form__label--anime {
+.form__input.valid ~ .form__label--anime,
+.form__input.invalid ~ .form__label--anime,
+.drop-down--active ~ .form__label--anime
+{
   position: absolute;
   top: 0;
   left: 0;
@@ -162,11 +164,12 @@ body {
   width: 100%;
   margin-top: 0.2em;
   padding: .5em 0 .4em 0;
+  position: relative;
   line-height: 1.143;
   font-weight: normal;
   background: transparent;
   border: none;
-  border-bottom: 0.7px solid $input-border-color;
+  border-bottom: 1px solid $input-border-color;
   transition: all 0.3s linear;
 }
 
@@ -174,10 +177,28 @@ body {
 .form__input:focus {
   outline: none;
   border: none;
-  border-bottom: 0.7px solid #979797;
+  border-bottom: 1px solid #979797;
 
 }
 
+.form__input.invalid {
+  color: #FF2222;
+  border-bottom: #FF2222 1px solid;
+}
+
+.form__input.valid ~ .valid-icon{
+
+  &:after{
+    content: "";
+    display: inline-block;
+    width: 11px;
+    height: 8px;
+    position: absolute;
+    top: 54%;
+    right: 0;
+    background: url("../images/ok.svg") no-repeat;
+  }
+}
 
 // Custom selector -- start
 
@@ -195,11 +216,12 @@ body {
 .drop-down--active .drop-down__button {
   outline: none;
   border: none;
-  border-bottom: 0.7px solid #979797;
+  border-bottom: 1px solid #979797;
 }
 
 .drop-down__button {
   position: relative;
+  text-align: left;
   cursor: pointer;
 
   span {
@@ -291,7 +313,8 @@ body {
   margin-top: 0.4em;
   z-index: 2;
 }
-.drop-down--active .drop-down__menu-box-nationality{
+
+.drop-down--active .drop-down__menu-box-nationality {
   z-index: 3;
 }
 
@@ -315,13 +338,15 @@ body {
 
 .drop-down__item:hover:before {
   display: block;
-}.drop-down__menu {
-   max-height: 200px;
-   overflow-y: scroll;
-   overflow-x: hidden;
-   scrollbar-color: #d4aa70 #e4e4e4;
-   scrollbar-width: thin;
- }
+}
+
+.drop-down__menu {
+  max-height: 200px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-color: #d4aa70 #e4e4e4;
+  scrollbar-width: thin;
+}
 
 .drop-down__menu::-webkit-scrollbar {
   width: 4px;
@@ -380,7 +405,7 @@ body {
   border: none;
 }
 
-.form__radio-inner input[type=radio] {
+.form__radio-inner .form__radio {
   display: none;
 }
 
@@ -404,8 +429,13 @@ body {
   background: url(../images/radio-off.svg) 0 0 no-repeat;
 }
 
+/* Error */
+.form__radio.invalid + label:before {
+  background: url(../images/radio-error.svg) 0 0 no-repeat;
+}
+
 /* Checked */
-.form__radio-inner input[type=radio]:checked + label:before {
+.form__radio:checked + label:before {
   background: url(../images/radio-on.svg) 0 0 no-repeat;
 }
 
@@ -415,7 +445,7 @@ body {
 }
 
 /* Disabled */
-.form__radio-inner input[type=radio]:disabled + label:before {
+.form__radio:disabled + label:before {
   filter: grayscale(100%);
 }
 
@@ -424,35 +454,36 @@ body {
 
 // Custom calendar --Start
 
-.drop-down__wrapper{
+.drop-down__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.drop-down__select-day{
+.drop-down__select-day {
   flex: 0 1 23.66%;
 
 }
 
-.drop-down__select-month{
+.drop-down__select-month {
   flex: 0 0 38.7%;
 
 }
 
-.drop-down__select-year{
+.drop-down__select-year {
   flex: 0 1 28.7%;
 }
 
-.drop-down__menu-calendar{
-  .drop-down__item{
+.drop-down__menu-calendar {
+  .drop-down__item {
     text-align: center;
   }
 }
 
 // Custom calendar --  End
 
-input[type="password"]{
+
+input[type="password"] {
   padding: .437em 0 .2em 0;
   font-family: $font-PT;
   font-style: normal;
@@ -464,24 +495,24 @@ input[type="password"]{
 
 // form__bottom --  Start
 
-.form__bottom{
+.form__bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.form__bottom-link{
+.form__bottom-link {
   font-size: $font-size-link;
 
 }
 
-.form__bottom-text{
+.form__bottom-text {
   display: inline-block;
   padding: 0;
   margin: 0;
 }
 
-.link__login{
+.link__login {
   display: inline-block;
   padding: 0;
   margin: 0;
@@ -489,34 +520,130 @@ input[type="password"]{
   transition: all 0.1s linear;
   border: none;
   background: transparent;
-  svg{
+
+  svg {
     fill: $font-color-link;
   }
 }
 
 .link__login:hover {
 
-  svg{
+  svg {
     fill: #5A61EDFF;
   }
 
 }
 
-.button{
-  padding: 0.5em 1.8em 0.5em 1.7em;
+.button {
+  display: inline-block;
+  padding: 0.5em 1.8em 0.64em 1.8em;
   font-weight: 400;
   font-family: $font-PT;
   color: #ffffff;
   background: $bg-sign-aside;
-  border: 0.5px solid #FFFFFF;
+  border: none;
   cursor: pointer;
   transition: all .3s linear;
 }
 
-button:hover{
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  border-color: $font-color-link;
+.button:hover {
+  //transform: translateY(-3px);
+  //box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+
+.button:active {
+  //transform: translateY(-1px);
+  //box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+//.button::after {
+//  content: "";
+//  display: inline-block;
+//  height: 100%;
+//  width: 100%;
+//  position: absolute;
+//  top: 0;
+//  left: 0;
+//  z-index: -1;
+//  transition: all .4s;
+//}
+
+//.button-animated {
+//  animation: moveInBottom 5s ease-out;
+//  animation-fill-mode: backwards;
+//}
+//
+//@keyframes moveInBottom {
+//  0% {
+//    opacity: 0;
+//    transform: translateY(30px);
+//  }
+//
+//  100% {
+//    opacity: 1;
+//    transform: translateY(0px);
+//  }
+//}
+
+.button.active {
+  -moz-animation: cycle 2s linear;
+  -webkit-animation: cycle 2s linear;
+}
+
+@-moz-keyframes cycle {
+  35% {
+    transform: rotate(0) translate(0, 0);
+  }
+  40% {
+    transform: rotate(5deg) translate(0, -2px);
+  }
+  45% {
+    transform: rotate(-3deg) translate(0, -2px);
+  }
+  50% {
+    transform: rotate(5deg) translate(0, -2px);
+  }
+  55% {
+    transform: rotate(-3deg) translate(0, -2px);
+  }
+  60% {
+    transform: rotate(5deg) translate(0, -2px);
+  }
+  65% {
+    transform: rotate(-3deg) translate(0, -2px);
+  }
+  70% {
+    transform: rotate(0) translate(0, 0);
+  }
+}
+
+@-webkit-keyframes cycle {
+  35% {
+    transform: rotate(0) translate(0, 0);
+  }
+  40% {
+    transform: rotate(5deg) translate(0, -2px);
+  }
+  45% {
+    transform: rotate(-3deg) translate(0, -2px);
+  }
+  50% {
+    transform: rotate(5deg) translate(0, -2px);
+  }
+  55% {
+    transform: rotate(-3deg) translate(0, -2px);
+  }
+  60% {
+    transform: rotate(5deg) translate(0, -2px);
+  }
+  65% {
+    transform: rotate(-3deg) translate(0, -2px);
+  }
+  70% {
+    transform: rotate(0) translate(0, 0);
+  }
+}
+
 // form__bottom --  End
 
 
@@ -528,7 +655,7 @@ button:hover{
   background: $bg-sign-aside;
 }
 
-.sign-up__aside-title{
+.sign-up__aside-title {
   padding: 0 0 4px 0;
   margin: 0;
   position: absolute;
@@ -544,4 +671,36 @@ button:hover{
   transform-origin: bottom right;
   transform: rotate(-90deg);
 }
-// sign-up__aside --Start
+
+// sign-up__aside --End
+
+
+// Animation svg background --Start
+
+.svg__big-line {
+  stroke-dasharray: 1455px;
+  stroke-dashoffset: 2910px;
+  animation: anime__big-line 4s linear forwards;
+}
+
+.svg__small-line {
+  stroke-dasharray: 325px;
+  stroke-dashoffset: 650px;
+  animation: svg__small-line 2s linear 4s forwards;
+}
+
+@keyframes anime__big-line {
+  to {
+    stroke-dashoffset: 1455px;
+
+  }
+}
+
+@keyframes svg__small-line {
+  to {
+    stroke-dashoffset: 325px;
+
+  }
+}
+
+// Animation svg background --End
