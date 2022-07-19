@@ -89,6 +89,7 @@ export class CustomCalendar {
         let addZero = num => (num >= 0 && num <= 9) ? '0' + num : num;
         date = `${addZero(date.getFullYear())}-${addZero(date.getMonth() + 1)}-${addZero(date.getDate())}`
         this.calendar.value = date;
+        this.calendar.classList.remove('invalid')
     }
 
 }

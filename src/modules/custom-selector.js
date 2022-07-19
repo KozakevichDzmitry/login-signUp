@@ -45,6 +45,7 @@ export class CustomSelect {
         const value = elem.dataset.value;
         if (elem.classList.contains('select-nationality')) {
             this.select.value = value;
+            this.select.classList.remove('invalid')
         }
     }
 

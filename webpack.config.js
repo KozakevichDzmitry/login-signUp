@@ -87,6 +87,10 @@ const plugins = () => {
                 {
                     from: path.resolve(__dirname, 'src/favicon/favicon.ico'),
                     to: path.resolve(__dirname, 'dist')
+                },
+                {
+                    from: path.resolve(__dirname, 'src/server.js'),
+                    to: path.resolve(__dirname, 'dist')
                 }
             ]
         }),
@@ -95,9 +99,9 @@ const plugins = () => {
             filename: filename('css')
         })
     ]
-    // if (isProd) {
-    //     base.push(new BundleAnalyzerPlugin())
-    // }
+    if (isProd) {
+        base.push(new BundleAnalyzerPlugin())
+    }
 
     return base
 }

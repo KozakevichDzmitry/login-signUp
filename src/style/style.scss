@@ -52,19 +52,33 @@ body {
   display: flex;
   flex-direction: row-reverse;
   width: 100%;
-  max-width: 665px;
+  max-width: 695px;
+  margin: 0 auto;
+  padding: 0 1.05em;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #ffffff;
   filter: drop-shadow(0px 0.857em .857em rgba(0, 0, 0, 0.2));
 }
 
 .sign-up__section {
   position: relative;
   width: 79.25%;
-  padding: 2.9em 1.571em 2.357em 1.5em;
+  padding: 2.8em 1.571em 2.357em 1.5em;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.sign-up__form-wrapper.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sign-up__form-wrapper.hidden ~ .form__message {
+  z-index: 1;
+  opacity: 1;
+  padding-bottom: 2.9em;
 }
 
 .sign-up__bg-image {
@@ -84,7 +98,7 @@ body {
   font-size: $font-size-title;
   font-weight: 500;
   line-height: 1.1718;
-  letter-spacing: -0.46px;
+  letter-spacing: -0.44px;
   color: $font-color-title;
 }
 
@@ -92,7 +106,7 @@ body {
   margin: 0;
   padding: 0;
   font-size: $font-size-basic;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 
 .sign-up__form {
@@ -105,16 +119,17 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 5.8em;
+  margin-bottom: 5.7em;
 }
 
 .form__item {
   flex: 1 1 calc(50% - .536em);
   min-width: 150px;
+  max-width: 270px;
 }
 
 .form__item:nth-child(2n-1) {
-  margin-right: 1.071em;
+  margin-right: 1em;
 }
 
 .form__input-wrapper {
@@ -133,19 +148,21 @@ body {
 .form__input:focus ~ .form__label--anime,
 .form__input.valid ~ .form__label--anime,
 .form__input.invalid ~ .form__label--anime,
-.drop-down--active ~ .form__label--anime
-{
+.drop-down--active ~ .form__label--anime {
   position: absolute;
   top: 0;
   left: 0;
   transform: translateY(0%);
   font-size: $font-size-label;
   color: $font-color-label;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-weight: 300;
 }
 
 .drop-down ~ .form__label--anime {
-  z-index: -1;
+  z-index: 0;
 }
 
 .form__label--anime {
@@ -157,7 +174,7 @@ body {
   color: $font-color-basic;
   font-weight: normal;
   transition: all 0.3s linear;
-  z-index: -1;
+  z-index: 0;
 }
 
 .form__input {
@@ -165,12 +182,13 @@ body {
   margin-top: 0.2em;
   padding: .5em 0 .4em 0;
   position: relative;
-  line-height: 1.143;
+  line-height: 1.14;
   font-weight: normal;
   background: transparent;
   border: none;
   border-bottom: 1px solid $input-border-color;
   transition: all 0.3s linear;
+  z-index: 1;
 }
 
 .form__input:active,
@@ -182,26 +200,54 @@ body {
 }
 
 .form__input.invalid {
-  color: #FF2222;
-  border-bottom: #FF2222 1px solid;
+  color: $font-color-error;
+  border-bottom: $input-border-color-error 1px solid;
 }
 
-.form__input.valid ~ .valid-icon{
 
-  &:after{
+.form__input.valid ~ .valid-icon {
+
+  &:after {
     content: "";
     display: inline-block;
     width: 11px;
     height: 8px;
     position: absolute;
-    top: 54%;
+    top: 53%;
     right: 0;
     background: url("../images/ok.svg") no-repeat;
   }
 }
 
-// Custom selector -- start
+.form__input-error-massage {
+  max-width: 100%;
+  padding: 1px 0 0 0;
+  margin: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 8px;
+  transform: translateY(100%);
+  color: $font-color-error;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transition: all 0.2s linear;
+}
 
+.form__input.invalid ~ .form__input-error-massage {
+  opacity: 1;
+}
+
+.form__radio.invalid ~ .form__input-error-massage {
+  opacity: 1;
+  max-width: 200%;
+  width: max-content;
+}
+
+
+// Custom selector -- start
 
 .form__select {
   display: none;
@@ -217,6 +263,9 @@ body {
   outline: none;
   border: none;
   border-bottom: 1px solid #979797;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .drop-down__button {
@@ -296,6 +345,9 @@ body {
   cursor: pointer;
   position: relative;
   border-bottom: 1px solid #e0e2e9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .drop-down__item:hover {
@@ -389,54 +441,48 @@ body {
 
 // Custom radio -- Start
 
-.form__radio-inner {
-  display: flex;
-  align-items: center;
-  width: auto;
-  margin-right: 19px;
-  font-size: $font-size-basic;
-  line-height: 1.143;
-  font-weight: normal;
-  color: $font-color-basic;
-  border: none;
-}
-
-.form__radio-inner:hover {
-  border: none;
-}
-
-.form__radio-inner .form__radio {
+.form__radio {
   display: none;
 }
 
-.form__radio-inner label {
+.form__radio-label {
   display: inline-block;
-  cursor: pointer;
+  margin-top: 0.2em;
+  margin-right: 1.45em;
+  padding: 0.5em 0 0.4em 1.2em;
   position: relative;
-  padding-left: 1.2em;
+  line-height: 1.14;
+  font-weight: normal;
+  background: transparent;
+  border: none;
+  cursor: pointer;
   user-select: none;
 }
 
-.form__radio-inner label:before {
+.form__radio-label:hover {
+  border: none;
+}
+
+.form__radio-label:before {
   content: "";
   display: inline-block;
   width: 1em;
   height: 1em;
   position: absolute;
   top: 50%;
-  left: 0;
+  left: -2px;
   transform: translateY(-50%);
-  background: url(../images/radio-off.svg) 0 0 no-repeat;
+  background: no-repeat center url(../images/radio-off.svg);
 }
 
 /* Error */
 .form__radio.invalid + label:before {
-  background: url(../images/radio-error.svg) 0 0 no-repeat;
+  background: no-repeat center url(../images/radio-error.svg);
 }
 
 /* Checked */
 .form__radio:checked + label:before {
-  background: url(../images/radio-on.svg) 0 0 no-repeat;
+  background: no-repeat center url(../images/radio-on.svg);
 }
 
 /* Hover */
@@ -493,22 +539,24 @@ input[type="password"] {
   letter-spacing: .0625em;
 }
 
+
 // form__bottom --  Start
 
 .form__bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .form__bottom-link {
+  margin-right: 2em;
   font-size: $font-size-link;
-
 }
 
 .form__bottom-text {
   display: inline-block;
-  padding: 0;
+  padding: 0.5em 0 0.5em 0;
   margin: 0;
 }
 
@@ -517,11 +565,11 @@ input[type="password"] {
   padding: 0;
   margin: 0;
   vertical-align: middle;
-  transition: all 0.1s linear;
   border: none;
   background: transparent;
 
   svg {
+    transition: all 0.1s linear;
     fill: $font-color-link;
   }
 }
@@ -536,7 +584,7 @@ input[type="password"] {
 
 .button {
   display: inline-block;
-  padding: 0.5em 1.8em 0.64em 1.8em;
+  padding: 0.5em 1.9em 0.64em 1.8em;
   font-weight: 400;
   font-family: $font-PT;
   color: #ffffff;
@@ -546,51 +594,78 @@ input[type="password"] {
   transition: all .3s linear;
 }
 
+// form__bottom --  End
+
+
+// form message block --Start
+
+.form__message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
+  height: 100%;
+  padding: 2.9em 1.571em 2.357em 1.5em;
+  opacity: 0;
+  transition: all 0.2s linear;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.message__wrapper {
+  position: absolute;
+  top: 45%;
+  left: 0;
+  overflow: hidden;
+  padding-left: 4.5em;
+}
+
+.message__title {
+  margin: 0 0 0.4em 0;
+  padding: 0;
+  font-size: $font-size-title;
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.021em;
+}
+
+.message__text {
+  margin: 0 0 11px 0;
+  padding: 0;
+  font-weight: 300;
+  line-height: 1.43em;
+}
+
+// form message block --End
+
+
+// BUTTON actions --Start
+
+
 .button:hover {
-  //transform: translateY(-3px);
-  //box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+  transform: translateY(3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.button:focus-visible {
+  transform: translateY(3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .button:active {
-  //transform: translateY(-1px);
-  //box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-//.button::after {
-//  content: "";
-//  display: inline-block;
-//  height: 100%;
-//  width: 100%;
-//  position: absolute;
-//  top: 0;
-//  left: 0;
-//  z-index: -1;
-//  transition: all .4s;
-//}
-
-//.button-animated {
-//  animation: moveInBottom 5s ease-out;
-//  animation-fill-mode: backwards;
-//}
-//
-//@keyframes moveInBottom {
-//  0% {
-//    opacity: 0;
-//    transform: translateY(30px);
-//  }
-//
-//  100% {
-//    opacity: 1;
-//    transform: translateY(0px);
-//  }
-//}
-
-.button.active {
-  -moz-animation: cycle 2s linear;
-  -webkit-animation: cycle 2s linear;
+.button.error {
+  -moz-animation: rocking 2s linear;
+  -webkit-animation: rocking 2s linear;
 }
 
-@-moz-keyframes cycle {
+@-moz-keyframes rocking {
   35% {
     transform: rotate(0) translate(0, 0);
   }
@@ -617,7 +692,7 @@ input[type="password"] {
   }
 }
 
-@-webkit-keyframes cycle {
+@-webkit-keyframes rocking {
   35% {
     transform: rotate(0) translate(0, 0);
   }
@@ -644,7 +719,7 @@ input[type="password"] {
   }
 }
 
-// form__bottom --  End
+// BUTTON actions --End
 
 
 // sign-up__aside --Start
@@ -656,11 +731,11 @@ input[type="password"] {
 }
 
 .sign-up__aside-title {
-  padding: 0 0 4px 0;
+  padding: 0 0 5px 0;
   margin: 0;
   position: absolute;
   right: 0;
-  top: 48%;
+  top: 47.5%;
   font-family: $font-PT;
   font-size: 3.5em;
   font-weight: 400;
@@ -680,27 +755,96 @@ input[type="password"] {
 .svg__big-line {
   stroke-dasharray: 1455px;
   stroke-dashoffset: 2910px;
-  animation: anime__big-line 4s linear forwards;
+  animation: anime__big-line 4s linear 5s forwards;
 }
 
 .svg__small-line {
   stroke-dasharray: 325px;
   stroke-dashoffset: 650px;
-  animation: svg__small-line 2s linear 4s forwards;
+  animation: svg__small-line 2s linear 9s forwards;
 }
 
 @keyframes anime__big-line {
   to {
     stroke-dashoffset: 1455px;
-
   }
 }
 
 @keyframes svg__small-line {
   to {
     stroke-dashoffset: 325px;
-
   }
 }
 
 // Animation svg background --End
+
+
+// Lift Animation -Start
+
+.lift-animation:nth-child(1) {
+  animation: lift 0.5s backwards 0.2s;
+}
+
+.lift-animation:nth-child(2) {
+  animation: lift 0.5s backwards 0.7s;
+}
+
+.lift-animation:nth-child(3) {
+  animation: lift 0.5s backwards 1.2s;
+}
+
+.lift-animation:nth-child(4) {
+  animation: lift 0.5s backwards 1.7s;
+}
+
+.lift-animation:nth-child(5) {
+  animation: lift 0.5s backwards 2.2s;
+}
+
+.lift-animation:nth-child(6) {
+  animation: lift 0.5s backwards 2.7s;
+}
+
+.lift-animation:nth-child(7) {
+  animation: lift 0.5s backwards 3.2s;
+}
+
+.lift-animation:nth-child(8) {
+  animation: lift 0.5s backwards 3.7s;
+}
+
+.lift-animation-btn {
+  animation: lift 0.5s backwards 4.2s;
+}
+
+@keyframes lift {
+  from {
+    opacity: 0;
+    transform: translateY(15em);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+// @Media --Start
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+  .form__item {
+    width: 100%;
+
+    &:nth-child(2n-1) {
+      margin-right: 0;
+    }
+
+  }
+
+}
+
+// @Media --End

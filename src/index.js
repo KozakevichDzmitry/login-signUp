@@ -4,6 +4,7 @@ import {CustomCalendar} from "@/modules/custom-calendar";
 import {ValidateForm} from "@/modules/ValidateForm";
 
 
+
 const customSelect = new CustomSelect('dropDownNationality', 'nationality')
 
 const customCalendar = new CustomCalendar({
