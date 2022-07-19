@@ -12,7 +12,7 @@ const app = express();
 
 
 app.use(express.static(path.join(__dirname, "/")));
-app.use(express.static(__dirname + '/ru'));
+app.use(express.static(__dirname + '/dist'));
 
 
 app.post("/email", (req, res) => {

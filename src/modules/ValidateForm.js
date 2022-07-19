@@ -162,7 +162,7 @@ export class ValidateForm {
     }
 
     errorForm() { //add animate rocking from side to side for button then form has mistake
-        fetch(setTimeout(() => this.submit.classList.add('error'), 100))
+        new Promise(setTimeout(() => this.submit.classList.add('error'), 100))
             .then(() => this.submit.classList.remove('error'))
     }
 
