@@ -65,7 +65,7 @@ body {
 .sign-up__section {
   position: relative;
   width: 79.25%;
-  padding: 2.8em 1.571em 2.357em 1.5em;
+  padding: 2.8em 1.571em 2.25em 1.5em;
   background: #ffffff;
   overflow: hidden;
 }
@@ -88,7 +88,7 @@ body {
 }
 
 .sign-up__header {
-  margin-bottom: 1.429em;
+  margin-bottom: 1.3em;
 }
 
 .sign-up__title {
@@ -96,7 +96,7 @@ body {
   padding: 0;
   font-size: $font-size-title;
   font-weight: 500;
-  line-height: 1.1718;
+  line-height: 1.2;
   letter-spacing: -0.44px;
   color: $font-color-title;
 }
@@ -118,7 +118,7 @@ body {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 5.7em;
+  margin-bottom: 5.8em;
 }
 
 .form__item {
@@ -584,7 +584,7 @@ input[type="password"] {
 
 .button {
   display: inline-block;
-  padding: 0.5em 1.9em 0.64em 1.8em;
+  padding: 0.5em 1.9em 0.6em 1.8em;
   font-weight: 400;
   font-family: $font-PT;
   color: #ffffff;
