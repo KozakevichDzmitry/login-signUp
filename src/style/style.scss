@@ -85,7 +85,6 @@ body {
   position: absolute;
   bottom: 0;
   right: 0;
-  z-index: -2;
 }
 
 .sign-up__header {
@@ -449,7 +448,7 @@ body {
   display: inline-block;
   margin-top: 0.2em;
   margin-right: 1.45em;
-  padding: 0.5em 0 0.4em 1.2em;
+  padding: 0.5em 0 0.6em 1.2em;
   position: relative;
   line-height: 1.14;
   font-weight: normal;
@@ -592,6 +591,8 @@ input[type="password"] {
   border: none;
   cursor: pointer;
   transition: all .3s linear;
+  position: relative;
+  z-index: 1;
 }
 
 // form__bottom --  End
