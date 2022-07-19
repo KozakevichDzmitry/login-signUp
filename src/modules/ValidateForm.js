@@ -163,11 +163,11 @@ export class ValidateForm {
 
     errorForm() { //add animate rocking from side to side for button then form has mistake
         new Promise(resolve => {
-            setTimeout(() => {
             this.submit.classList.add('error');
+            setTimeout(() => {
                 resolve()
-            }, 100)})
-            .then(() => this.submit.classList.remove('error'))
+            }, 1500)
+        }).then(() => this.submit.classList.remove('error'))
     }
 
 
