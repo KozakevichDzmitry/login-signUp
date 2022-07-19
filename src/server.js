@@ -27,7 +27,7 @@ app.post("/email", (req, res) => {
         }
       },
       {
-        from: `Mailer Test <${process.env.EMAIL}>` // (your mail)
+        from: `Sing up <${process.env.EMAIL}>` // (your mail)
       });
 
   let form = new multiparty.Form();
@@ -39,8 +39,8 @@ app.post("/email", (req, res) => {
     });
     const mail = {
       sender: `New message`,
-      to: process.env.EMAIL, // receiver email,
-      subject: 'New order',
+      to: process.env.EMAIL+`, ${fields.email}`,  // receiver email,
+      subject: 'New client',
       html:`
       <h2>CLIENT INFO</h2>
        <ul>
