@@ -140,7 +140,6 @@ body {
 .form__input-wrapper--flex {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
 }
 
 .form__label,
@@ -472,6 +471,7 @@ body {
   left: -2px;
   transform: translateY(-50%);
   background: no-repeat center url(../images/radio-off.svg);
+  background-size: contain;
 }
 
 /* Error */
@@ -546,6 +546,7 @@ input[type="password"] {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  position: relative;
 }
 
 .form__bottom-link {
@@ -838,10 +839,10 @@ input[type="password"] {
     font-size: 14px;
   }
   .form__item {
-    width: 100%;
+    flex: 0 0 100%;
 
     &:nth-child(2n-1) {
-      margin-right: 0;
+     margin-right: 0;
     }
 
   }
