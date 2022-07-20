@@ -25,9 +25,18 @@ $font-size-label: 0.75rem; //12px
 $font-size-link: 0.8125rem; //13px
 
 
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
+
 *,
 *::before,
 *::after {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -49,7 +58,12 @@ body {
 }
 
 .sign-up__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: row-reverse;
   flex-direction: row-reverse;
   width: 100%;
   max-width: 695px;
@@ -58,7 +72,10 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  -webkit-filter: drop-shadow(0px 0.857em .857em rgba(0, 0, 0, 0.2));
   filter: drop-shadow(0px 0.857em .857em rgba(0, 0, 0, 0.2));
 }
 
@@ -114,14 +131,23 @@ body {
 }
 
 .form__body {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
   margin-bottom: 5.8em;
 }
 
 .form__item {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 calc(50% - .536em);
   flex: 1 1 calc(50% - .536em);
   min-width: 150px;
   max-width: 270px;
@@ -138,7 +164,11 @@ body {
 }
 
 .form__input-wrapper--flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -150,11 +180,14 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  -webkit-transform: translateY(0%);
+  -ms-transform: translateY(0%);
   transform: translateY(0%);
   font-size: $font-size-label;
   color: $font-color-label;
   white-space: nowrap;
   overflow: hidden;
+  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   font-weight: 300;
 }
@@ -167,10 +200,14 @@ body {
   padding-bottom: .571em;
   top: 100%;
   left: 0;
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
   transform: translateY(-100%);
   font-size: $font-size-basic;
   color: $font-color-basic;
   font-weight: normal;
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
   transition: all 0.3s linear;
   z-index: 0;
 }
@@ -185,6 +222,8 @@ body {
   background: transparent;
   border: none;
   border-bottom: 1px solid $input-border-color;
+  -webkit-transition: all 0.3s linear;
+  -o-transition: all 0.3s linear;
   transition: all 0.3s linear;
   z-index: 1;
 }
@@ -217,7 +256,7 @@ body {
   }
 }
 
-.form__input-error-massage {
+.form__input-error-message {
   max-width: 100%;
   padding: 1px 0 0 0;
   margin: 0;
@@ -225,22 +264,29 @@ body {
   bottom: 0;
   left: 0;
   font-size: 8px;
+  -webkit-transform: translateY(100%);
+  -ms-transform: translateY(100%);
   transform: translateY(100%);
   color: $font-color-error;
   white-space: nowrap;
   overflow: hidden;
+  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   opacity: 0;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
 
-.form__input.invalid ~ .form__input-error-massage {
+.form__input.invalid ~ .form__input-error-message {
   opacity: 1;
 }
 
-.form__radio.invalid ~ .form__input-error-massage {
+.form__radio.invalid ~ .form__input-error-message {
   opacity: 1;
   max-width: 200%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
   width: max-content;
 }
 
@@ -263,6 +309,7 @@ body {
   border-bottom: 1px solid #979797;
   white-space: nowrap;
   overflow: hidden;
+  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
 
@@ -288,6 +335,8 @@ body {
     background-image: url('../images/arrow.svg');
     background-size: contain;
     background-repeat: no-repeat;
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
     transition: all 0.3s linear;
   }
 }
@@ -298,6 +347,7 @@ body {
   left: 0;
   background-color: #fff;
   border-radius: .286em;
+  -webkit-box-shadow: 0 .2em .4em 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 .2em .4em 0 rgba(0, 0, 0, 0.2);
   transition: all 0.3s;
   -webkit-transition: all 0.3s;
@@ -345,6 +395,7 @@ body {
   border-bottom: 1px solid #e0e2e9;
   white-space: nowrap;
   overflow: hidden;
+  -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
 }
 
@@ -370,6 +421,8 @@ body {
 
 .drop-down--active .drop-down__button {
   &:after {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
     transform: rotate(180deg);
   }
 }
@@ -382,6 +435,8 @@ body {
   background-color: $bg-sign-aside;
   left: 0;
   top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   display: none;
 }
@@ -454,6 +509,9 @@ body {
   background: transparent;
   border: none;
   cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -469,6 +527,8 @@ body {
   position: absolute;
   top: 50%;
   left: -2px;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   background: no-repeat center url(../images/radio-off.svg);
   background-size: contain;
@@ -486,11 +546,13 @@ body {
 
 /* Hover */
 .form__radio-inner label:hover:before {
+  -webkit-filter: brightness(120%);
   filter: brightness(120%);
 }
 
 /* Disabled */
 .form__radio:disabled + label:before {
+  -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
 }
 
@@ -500,22 +562,34 @@ body {
 // Custom calendar --Start
 
 .drop-down__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .drop-down__select-day {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 23.66%;
   flex: 0 1 23.66%;
 
 }
 
 .drop-down__select-month {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 38.7%;
   flex: 0 0 38.7%;
 
 }
 
 .drop-down__select-year {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 1 28.7%;
   flex: 0 1 28.7%;
 }
 
@@ -542,9 +616,16 @@ input[type="password"] {
 // form__bottom --  Start
 
 .form__bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   position: relative;
 }
@@ -569,6 +650,8 @@ input[type="password"] {
   background: transparent;
 
   svg {
+    -webkit-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
     transition: all 0.1s linear;
     fill: $font-color-link;
   }
@@ -591,6 +674,8 @@ input[type="password"] {
   background: $bg-sign-aside;
   border: none;
   cursor: pointer;
+  -webkit-transition: all .3s linear;
+  -o-transition: all .3s linear;
   transition: all .3s linear;
   position: relative;
   z-index: 1;
@@ -605,12 +690,19 @@ input[type="password"] {
   position: absolute;
   top: 0;
   left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  -ms-flex-direction: column-reverse;
   flex-direction: column-reverse;
   width: 100%;
   height: 100%;
   padding: 2.9em 1.571em 2.357em 1.5em;
   opacity: 0;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
   transition: all 0.2s linear;
   z-index: -1;
   overflow: hidden;
@@ -648,17 +740,28 @@ input[type="password"] {
 
 .button:hover {
 
+  -webkit-transform: translateY(3px);
+
+  -ms-transform: translateY(3px);
+
   transform: translateY(3px);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .button:focus-visible {
+  -webkit-transform: translateY(3px);
+  -ms-transform: translateY(3px);
   transform: translateY(3px);
+  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .button:active {
+  -webkit-transform: translateY(-1px);
+  -ms-transform: translateY(-1px);
   transform: translateY(-1px);
+  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -667,56 +770,37 @@ input[type="password"] {
   -webkit-animation: rocking 2s linear;
 }
 
-@-moz-keyframes rocking {
-  35% {
-    transform: rotate(0) translate(0, 0);
-  }
-  40% {
-    transform: rotate(5deg) translate(0, -2px);
-  }
-  45% {
-    transform: rotate(-3deg) translate(0, -2px);
-  }
-  50% {
-    transform: rotate(5deg) translate(0, -2px);
-  }
-  55% {
-    transform: rotate(-3deg) translate(0, -2px);
-  }
-  60% {
-    transform: rotate(5deg) translate(0, -2px);
-  }
-  65% {
-    transform: rotate(-3deg) translate(0, -2px);
-  }
-  70% {
-    transform: rotate(0) translate(0, 0);
-  }
-}
-
 @-webkit-keyframes rocking {
   35% {
+    -webkit-transform: rotate(0) translate(0, 0);
     transform: rotate(0) translate(0, 0);
   }
   40% {
+    -webkit-transform: rotate(5deg) translate(0, -2px);
     transform: rotate(5deg) translate(0, -2px);
   }
   45% {
+    -webkit-transform: rotate(-3deg) translate(0, -2px);
     transform: rotate(-3deg) translate(0, -2px);
   }
   50% {
+    -webkit-transform: rotate(5deg) translate(0, -2px);
     transform: rotate(5deg) translate(0, -2px);
   }
   55% {
+    -webkit-transform: rotate(-3deg) translate(0, -2px);
     transform: rotate(-3deg) translate(0, -2px);
   }
   60% {
+    -webkit-transform: rotate(5deg) translate(0, -2px);
     transform: rotate(5deg) translate(0, -2px);
   }
   65% {
+    -webkit-transform: rotate(-3deg) translate(0, -2px);
     transform: rotate(-3deg) translate(0, -2px);
   }
   70% {
+    -webkit-transform: rotate(0) translate(0, 0);
     transform: rotate(0) translate(0, 0);
   }
 }
@@ -745,7 +829,11 @@ input[type="password"] {
   color: #ffffff;
   letter-spacing: 0.5px;
   white-space: nowrap;
+  -webkit-transform-origin: bottom right;
+  -ms-transform-origin: bottom right;
   transform-origin: bottom right;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
 
@@ -757,18 +845,32 @@ input[type="password"] {
 .svg__big-line {
   stroke-dasharray: 1455px;
   stroke-dashoffset: 2910px;
+  -webkit-animation: anime__big-line 4s linear 5s forwards;
   animation: anime__big-line 4s linear 5s forwards;
 }
 
 .svg__small-line {
   stroke-dasharray: 325px;
   stroke-dashoffset: 650px;
+  -webkit-animation: svg__small-line 2s linear 9s forwards;
   animation: svg__small-line 2s linear 9s forwards;
+}
+
+@-webkit-keyframes anime__big-line {
+  to {
+    stroke-dashoffset: 1455px;
+  }
 }
 
 @keyframes anime__big-line {
   to {
     stroke-dashoffset: 1455px;
+  }
+}
+
+@-webkit-keyframes svg__small-line {
+  to {
+    stroke-dashoffset: 325px;
   }
 }
 
@@ -784,69 +886,93 @@ input[type="password"] {
 // Lift Animation -Start
 
 .lift-animation:nth-child(1) {
+  -webkit-animation: lift 0.5s backwards 0.2s;
   animation: lift 0.5s backwards 0.2s;
 }
 
 .lift-animation:nth-child(2) {
+  -webkit-animation: lift 0.5s backwards 0.7s;
   animation: lift 0.5s backwards 0.7s;
 }
 
 .lift-animation:nth-child(3) {
+  -webkit-animation: lift 0.5s backwards 1.2s;
   animation: lift 0.5s backwards 1.2s;
 }
 
 .lift-animation:nth-child(4) {
+  -webkit-animation: lift 0.5s backwards 1.7s;
   animation: lift 0.5s backwards 1.7s;
 }
 
 .lift-animation:nth-child(5) {
+  -webkit-animation: lift 0.5s backwards 2.2s;
   animation: lift 0.5s backwards 2.2s;
 }
 
 .lift-animation:nth-child(6) {
+  -webkit-animation: lift 0.5s backwards 2.7s;
   animation: lift 0.5s backwards 2.7s;
 }
 
 .lift-animation:nth-child(7) {
+  -webkit-animation: lift 0.5s backwards 3.2s;
   animation: lift 0.5s backwards 3.2s;
 }
 
 .lift-animation:nth-child(8) {
+  -webkit-animation: lift 0.5s backwards 3.7s;
   animation: lift 0.5s backwards 3.7s;
 }
 
 .lift-animation-btn {
+  -webkit-animation: lift 0.5s backwards 4.2s;
   animation: lift 0.5s backwards 4.2s;
 }
 
-@keyframes lift {
+@-webkit-keyframes lift {
   from {
     opacity: 0;
+    -webkit-transform: translateY(15em);
     transform: translateY(15em);
   }
   to {
+    -webkit-transform: translateY(0);
     transform: translateY(0);
     opacity: 1;
   }
 }
 
+@keyframes lift {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(15em);
+    transform: translateY(15em);
+  }
+  to {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
-
-// @Media --Start
+// Media --Start
 
 @media (max-width: 480px) {
   html {
     font-size: 14px;
   }
   .form__item {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 100%;
     flex: 0 0 100%;
 
     &:nth-child(2n-1) {
-     margin-right: 0;
+      margin-right: 0;
     }
 
   }
 
 }
 
-// @Media --End
+// Media --End
